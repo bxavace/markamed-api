@@ -1,0 +1,6 @@
+@markamed_api_HostAddress = http://localhost:5020
+
+GET {{markamed_api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
