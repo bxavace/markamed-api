@@ -14,6 +14,9 @@ namespace markamed_api.Data
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<RatingDepartment> RatingDepartments { get; set; }
         public DbSet<RatingAttribute> RatingAttributes { get; set; }
+        public DbSet<RatingFeedback> RatingFeedbacks { get; set; }
+        public DbSet<RatingAttributeItem> RatingAttributeItems { get; set; }
+        public DbSet<RatingDepartmentItem> RatingDepartmentItems { get; set; }
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             var entries = ChangeTracker.Entries()
@@ -56,6 +59,8 @@ namespace markamed_api.Data
             modelBuilder.ApplyConfiguration(new RatingDepartmentConfiguration());
             modelBuilder.ApplyConfiguration(new RatingAttributeConfiguration());
             modelBuilder.ApplyConfiguration(new RatingFeedbackConfiguration());
+            modelBuilder.ApplyConfiguration(new RatingAttributeItemConfiguration());
+            modelBuilder.ApplyConfiguration(new RatingDepartmentItemConfiguration());
 
             base.OnModelCreating(modelBuilder);
 

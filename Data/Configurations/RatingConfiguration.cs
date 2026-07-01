@@ -24,10 +24,18 @@ namespace markamed_api.Data.Configurations
                 .HasForeignKey(r => r.FacilityId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne(r => r.RatingAttribute)
-                .WithMany(ra => ra.Ratings)
-                .HasForeignKey(r => r.RatingAttributeId)
-                .OnDelete(DeleteBehavior.Restrict);
+            builder.Property(r => r.OverallScore)
+                .IsRequired(false);
+            
+            builder.HasMany(r => r.RatingAttributeItems)
+                .WithOne(rai => rai.Rating)
+                .HasForeignKey(rai => rai.RatingId)
+                .OnDelete(DeleteBehavior.Cascade);
+            
+            builder.HasMany(r => r.RatingDepartmentItems)
+                .WithOne(rdi => rdi.Rating)
+                .HasForeignKey(rdi => rdi.RatingId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
