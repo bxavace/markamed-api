@@ -1,5 +1,26 @@
 services:
 
+  mysql:
+    image: mysql:8.0
+    container_name: markamed_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: markamed
+      MYSQL_USER: markamed_user
+      MYSQL_PASSWORD: markamed_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - iam_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+
   postgres:
     image: postgres:16-alpine
     container_name: keycloak_postgres
@@ -46,3 +67,4 @@ networks:
 
 volumes:
   postgres_data:
+  mysql_data:
