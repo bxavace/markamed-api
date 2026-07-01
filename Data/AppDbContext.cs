@@ -61,6 +61,9 @@ namespace markamed_api.Data
 
             modelBuilder.Entity<Rating>()
                 .HasQueryFilter(r => !r.IsDeleted);
+
+            modelBuilder.Entity<Facility>()
+                .HasQueryFilter(f => !f.IsDeleted);
         }
     }
 }
