@@ -1,6 +1,6 @@
-namespace markamed_api.Models.Entities
+namespace markamed_api.Models.Dto
 {
-    public class Facility : EntityBase
+    public class FacilityDto
     {
         public string Code { get; set; }
         public string Name { get; set; }
@@ -26,7 +26,5 @@ namespace markamed_api.Models.Entities
         public string? LicenseStatus { get; set; }
         public string? LicenseNumber { get; set; }
         public string? LicenseDateIssued { get; set; }
-
-        public virtual ICollection<Rating> Ratings { get; set; } = null!;
     }
 }
