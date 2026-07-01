@@ -1,9 +1,18 @@
+using markamed_api.Interfaces.IService;
+using markamed_api.Services;
+using markamed_api.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Configure Services
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddScoped<IFacilityService, FacilityService>();
+builder.Services.AddScoped<IRatingService, RatingService>();
 
 var app = builder.Build();
 

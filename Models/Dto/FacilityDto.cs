@@ -2,6 +2,7 @@ namespace markamed_api.Models.Dto
 {
     public class FacilityDto
     {
+        public string Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
         public string FacilityMajorType { get; set; }
